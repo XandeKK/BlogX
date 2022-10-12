@@ -3,7 +3,7 @@ class ArticlesController < ApplicationController
   before_action :redirect_if_empty, except: [:index, :create]
 
   def index
-    @articles = Article.all
+    @articles = Article.all.includes(:tag)
   end
 
   def show
