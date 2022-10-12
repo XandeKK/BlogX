@@ -1,4 +1,42 @@
-<div>
-  <h1 class="font-bold text-4xl">Articles#edit</h1>
-  <p>Find me in app/views/articles/edit.html.erb</p>
+<div class="mt-8 pb-20">
+  <%= form_with model: @article, url: article_path do |form| %>
+  <div class="mb-6">
+      <%= form.label :tag_id, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300" %>
+      <%= form.select :tag_id, Tag.all.map {|t| [t.name, t.id]}, {}, class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" %>
+    </div>
+    <div class="mb-6">
+      <%= form.label :title, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300" %>
+      <%= form.text_field :title, class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" %>
+    </div>
+    <div class="mb-6">
+      <%= form.label :description, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300" %>
+      <%= form.text_area :description, class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500", rows: 5 %>
+    </div>
+
+    <div class="mb-6">
+      <%= form.label :content, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300" %>
+      <%= form.text_area :content, name: "article[content]" %>
+    </div>
+
+    <%= form.submit class: "text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" %>
+  <% end %>
 </div>
+
+<%= content_for :head do %>
+  <link href='https://cdn.jsdelivr.net/npm/froala-editor@latest/css/froala_editor.pkgd.min.css' rel='stylesheet' type='text/css' />
+  <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/froala-editor@latest/js/froala_editor.pkgd.min.js'></script>  
+  <%= stylesheet_link_tag "dark_froala" %>
+<% end %>
+
+
+<script> 
+  var editor = new FroalaEditor('#article_content', {
+    theme: 'dark',
+    zIndex: 2003,
+    imageUploadURL: '/upload_file',
+  
+    imageUploadParams: {
+      id: 'my_editor'
+    }
+  });
+</script>
