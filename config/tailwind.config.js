@@ -8,6 +8,17 @@ module.exports = {
     './app/javascript/**/*.js',
     './app/views/**/*.{erb,haml,html,slim}'
   ],
+  safelist: [
+    {
+      pattern: /bg-(red|yellow|rose)-200/,
+    },
+    {
+      pattern: /text-(red|yellow|rose)-800/,
+    },
+    {
+      pattern: /text-(red|yellow|rose)-600/,
+    },
+  ],
   theme: {
     extend: {
       fontFamily: {

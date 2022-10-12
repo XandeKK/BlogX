@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
-  before_action :set_article, except: :index
-  before_action :redirect_if_empty, except: :index
+  before_action :set_article, except: [:index, :create]
+  before_action :redirect_if_empty, except: [:index, :create]
 
   def index
     @articles = Article.all
@@ -10,9 +10,9 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @article = Article.new tag: Tag.first
+    @article = Article.create! tag: Tag.first
 
-    if @article.save
+    if @article
       redirect_to article_path @article
     else
       redirect_to articles_path
