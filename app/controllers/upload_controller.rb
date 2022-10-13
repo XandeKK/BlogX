@@ -4,17 +4,13 @@ class UploadController < ActionController::Base
   
   def upload_file
     if params[:file]
-      FileUtils::mkdir_p(Rails.root.join("storage/files"))
-      
-      ext = File.extname(params[:file].original_filename)
-      ext = file_validation(ext)
-      file_name = "#{SecureRandom.urlsafe_base64}#{ext}"
-      path = Rails.root.join("storage/files/", file_name)
-      
-      File.open(path, "wb") {|f| f.write(params[:file].read)}
-      view_file = Rails.root.join("/download_file/", file_name).to_s
-      render :json => {:link => view_file}.to_json
+      blob = ActiveStorage::Blob.create_and_upload!(
+      io: params[:file],
+      filename: params[:file].original_filename,
+      content_type: params[:file].content_type
+    )
     
+    render json: {location: url_for(blob)}, content_type:  "text / html"
     else
       render :text => {:link => nil}.to_json
     end
