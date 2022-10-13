@@ -1,8 +1,9 @@
-height: 500
+height: 1000
 menubar: true
 toolbar:
   - undo redo | styles | code bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media | forecolor backcolor emoticons codesample
 plugins:
   - insertdatetime lists media table code help wordcount advlist autolink link image lists charmap preview anchor pagebreak searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media table emoticons template help codesample
 
+toolbar_sticky: true
 images_upload_url: '/upload_file'

@@ -38,3 +38,8 @@
     </div>
   </div>
 </footer>
+
+<% content_for :head do %>
+  <%= stylesheet_link_tag "prism" %>
+  <%= javascript_include_tag "prism" %>
+<% end %>
