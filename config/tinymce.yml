@@ -12,5 +12,7 @@ codesample_languages: [
   { text: 'Ruby', value: 'ruby' }
 ]
 
+plugins: 'autosave'
+
 toolbar_sticky: true
 images_upload_url: '/upload_file'
