@@ -5,5 +5,12 @@ toolbar:
 plugins:
   - insertdatetime lists media table code help wordcount advlist autolink link image lists charmap preview anchor pagebreak searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media table emoticons template help codesample
 
+codesample_languages: [
+  { text: 'HTML/XML', value: 'markup' },
+  { text: 'JavaScript', value: 'javascript' },
+  { text: 'CSS', value: 'css' },
+  { text: 'Ruby', value: 'ruby' }
+]
+
 toolbar_sticky: true
 images_upload_url: '/upload_file'
